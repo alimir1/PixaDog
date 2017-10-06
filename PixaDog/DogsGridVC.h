@@ -11,5 +11,6 @@
 @interface DogsGridVC : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) NSArray *dogs;
 
 @end
