@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhK-p8-agP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dogs GridVC-->
+        <!--Dogs-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DogsGridVC" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="noH-yd-hUz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xl2-cp-khz">
                                     <size key="itemSize" width="150" height="150"/>
@@ -59,22 +59,72 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="n47-N2-5KM"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QL4-Bb-KC0">
+                                <rect key="frame" x="0.0" y="557" width="375" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-MS-8jB">
+                                        <rect key="frame" x="111.5" y="8" width="152" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Fetch Dogs"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o51-qW-w7a">
+                                        <rect key="frame" x="143" y="72" width="89" height="30"/>
+                                        <state key="normal" title="Clear History"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Ide-MS-8jB" firstAttribute="top" secondItem="QL4-Bb-KC0" secondAttribute="top" constant="8" id="HBd-vh-9cc"/>
+                                    <constraint firstAttribute="height" constant="110" id="WCl-9o-CjS"/>
+                                    <constraint firstItem="o51-qW-w7a" firstAttribute="centerX" secondItem="QL4-Bb-KC0" secondAttribute="centerX" id="h7o-OY-cvR"/>
+                                    <constraint firstItem="Ide-MS-8jB" firstAttribute="centerX" secondItem="QL4-Bb-KC0" secondAttribute="centerX" id="m4y-EE-Vqm"/>
+                                    <constraint firstAttribute="bottom" secondItem="o51-qW-w7a" secondAttribute="bottom" constant="8" id="mcP-tk-0ci"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="noH-yd-hUz" secondAttribute="bottom" id="284-gS-g9c"/>
+                            <constraint firstAttribute="trailing" secondItem="QL4-Bb-KC0" secondAttribute="trailing" id="91M-aM-OIB"/>
                             <constraint firstItem="noH-yd-hUz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ez6-z4-Kqk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QL4-Bb-KC0" secondAttribute="bottom" id="FUX-zX-8pC"/>
                             <constraint firstItem="noH-yd-hUz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SYX-WH-iZg"/>
                             <constraint firstAttribute="trailing" secondItem="noH-yd-hUz" secondAttribute="trailing" id="XNc-kD-025"/>
+                            <constraint firstItem="QL4-Bb-KC0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dnT-Ge-ATc"/>
+                            <constraint firstItem="QL4-Bb-KC0" firstAttribute="top" secondItem="noH-yd-hUz" secondAttribute="bottom" id="mzU-hM-xDm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Dogs" id="1a8-Hj-Ku5">
+                        <barButtonItem key="rightBarButtonItem" image="clock" id="XFL-1x-J8s"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="noH-yd-hUz" id="Rgg-wd-PQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PPe-Pq-U0s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vhK-p8-agP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9o5-rC-6nR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P7a-iY-Hma"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kh4-fe-Mha" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clock" width="25" height="25"/>
+    </resources>
+    <color key="tintColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
 </document>

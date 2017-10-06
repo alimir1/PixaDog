@@ -30,7 +30,7 @@
 {
     DogCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dogCollectionCell" forIndexPath:indexPath];
     
-    cell.dogImageView.image = [UIImage imageNamed:@"ali_mir"];
+    cell.dogImageView.image = [UIImage imageNamed:@"dog"];
     
     return cell;
 }

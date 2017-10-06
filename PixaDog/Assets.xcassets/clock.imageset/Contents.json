@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "profile_image_cropped.jpg",
+      "filename" : "icons8-Clock-22.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-Clock-50.png",
       "scale" : "2x"
     },
     {
