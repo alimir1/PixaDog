@@ -15,6 +15,7 @@
 		491CD7CC1F88107D003E5BC0 /* DogsGridVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7CB1F88107D003E5BC0 /* DogsGridVC.m */; };
 		491CD7CF1F881196003E5BC0 /* DogImageFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7CE1F881196003E5BC0 /* DogImageFlowLayout.m */; };
 		491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */; };
+		491CD7D51F881BC8003E5BC0 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D41F881BC8003E5BC0 /* HistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		491CD7CE1F881196003E5BC0 /* DogImageFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogImageFlowLayout.m; sourceTree = "<group>"; };
 		491CD7D01F881220003E5BC0 /* DogCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogCollectionViewCell.h; sourceTree = "<group>"; };
 		491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogCollectionViewCell.m; sourceTree = "<group>"; };
+		491CD7D31F881BC8003E5BC0 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		491CD7D41F881BC8003E5BC0 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 		491CD7C61F880FDF003E5BC0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				491CD7D31F881BC8003E5BC0 /* HistoryViewController.h */,
+				491CD7D41F881BC8003E5BC0 /* HistoryViewController.m */,
 				491CD7CA1F88107D003E5BC0 /* DogsGridVC.h */,
 				491CD7CB1F88107D003E5BC0 /* DogsGridVC.m */,
 			);
@@ -214,6 +219,7 @@
 				491CD7CF1F881196003E5BC0 /* DogImageFlowLayout.m in Sources */,
 				491CD7AC1F880D93003E5BC0 /* main.m in Sources */,
 				491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */,
+				491CD7D51F881BC8003E5BC0 /* HistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
