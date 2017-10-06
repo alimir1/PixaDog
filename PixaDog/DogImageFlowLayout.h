@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DogImageFlowLayout.h
 //  PixaDog
 //
 //  Created by Ali Mir on 10/6/17.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface DogImageFlowLayout : UICollectionViewFlowLayout
 
 @end
-

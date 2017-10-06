@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		491CD7AC1F880D93003E5BC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7AB1F880D93003E5BC0 /* main.m */; };
 		491CD7AF1F880D93003E5BC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7AE1F880D93003E5BC0 /* AppDelegate.m */; };
-		491CD7B21F880D93003E5BC0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7B11F880D93003E5BC0 /* ViewController.m */; };
 		491CD7B51F880D93003E5BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491CD7B31F880D93003E5BC0 /* Main.storyboard */; };
 		491CD7B71F880D93003E5BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491CD7B61F880D93003E5BC0 /* Assets.xcassets */; };
 		491CD7BA1F880D93003E5BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491CD7B81F880D93003E5BC0 /* LaunchScreen.storyboard */; };
+		491CD7CC1F88107D003E5BC0 /* DogsGridVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7CB1F88107D003E5BC0 /* DogsGridVC.m */; };
+		491CD7CF1F881196003E5BC0 /* DogImageFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7CE1F881196003E5BC0 /* DogImageFlowLayout.m */; };
+		491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,16 @@
 		491CD7AB1F880D93003E5BC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		491CD7AD1F880D93003E5BC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		491CD7AE1F880D93003E5BC0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		491CD7B01F880D93003E5BC0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		491CD7B11F880D93003E5BC0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		491CD7B41F880D93003E5BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		491CD7B61F880D93003E5BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		491CD7B91F880D93003E5BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491CD7BB1F880D93003E5BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		491CD7CA1F88107D003E5BC0 /* DogsGridVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogsGridVC.h; sourceTree = "<group>"; };
+		491CD7CB1F88107D003E5BC0 /* DogsGridVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogsGridVC.m; sourceTree = "<group>"; };
+		491CD7CD1F881196003E5BC0 /* DogImageFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogImageFlowLayout.h; sourceTree = "<group>"; };
+		491CD7CE1F881196003E5BC0 /* DogImageFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogImageFlowLayout.m; sourceTree = "<group>"; };
+		491CD7D01F881220003E5BC0 /* DogCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DogCollectionViewCell.h; sourceTree = "<group>"; };
+		491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DogCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +66,12 @@
 			children = (
 				491CD7AD1F880D93003E5BC0 /* AppDelegate.h */,
 				491CD7AE1F880D93003E5BC0 /* AppDelegate.m */,
-				491CD7B01F880D93003E5BC0 /* ViewController.h */,
-				491CD7B11F880D93003E5BC0 /* ViewController.m */,
-				491CD7B31F880D93003E5BC0 /* Main.storyboard */,
-				491CD7B61F880D93003E5BC0 /* Assets.xcassets */,
-				491CD7B81F880D93003E5BC0 /* LaunchScreen.storyboard */,
+				491CD7C81F880FFA003E5BC0 /* API */,
+				491CD7C41F880FD0003E5BC0 /* Models */,
+				491CD7C51F880FD6003E5BC0 /* Views */,
+				491CD7C61F880FDF003E5BC0 /* Controllers */,
+				491CD7C91F88103C003E5BC0 /* Storyboards */,
+				491CD7C71F880FF2003E5BC0 /* Assets */,
 				491CD7BB1F880D93003E5BC0 /* Info.plist */,
 				491CD7AA1F880D93003E5BC0 /* Supporting Files */,
 			);
@@ -77,6 +84,57 @@
 				491CD7AB1F880D93003E5BC0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		491CD7C41F880FD0003E5BC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		491CD7C51F880FD6003E5BC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				491CD7D01F881220003E5BC0 /* DogCollectionViewCell.h */,
+				491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */,
+				491CD7CD1F881196003E5BC0 /* DogImageFlowLayout.h */,
+				491CD7CE1F881196003E5BC0 /* DogImageFlowLayout.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		491CD7C61F880FDF003E5BC0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				491CD7CA1F88107D003E5BC0 /* DogsGridVC.h */,
+				491CD7CB1F88107D003E5BC0 /* DogsGridVC.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		491CD7C71F880FF2003E5BC0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				491CD7B61F880D93003E5BC0 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		491CD7C81F880FFA003E5BC0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		491CD7C91F88103C003E5BC0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				491CD7B31F880D93003E5BC0 /* Main.storyboard */,
+				491CD7B81F880D93003E5BC0 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491CD7B21F880D93003E5BC0 /* ViewController.m in Sources */,
+				491CD7CC1F88107D003E5BC0 /* DogsGridVC.m in Sources */,
 				491CD7AF1F880D93003E5BC0 /* AppDelegate.m in Sources */,
+				491CD7CF1F881196003E5BC0 /* DogImageFlowLayout.m in Sources */,
 				491CD7AC1F880D93003E5BC0 /* main.m in Sources */,
+				491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
