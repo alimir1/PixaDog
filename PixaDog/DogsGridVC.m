@@ -17,6 +17,7 @@
 @implementation DogsGridVC
 
 #pragma mark - Lifecycles
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

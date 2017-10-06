@@ -458,6 +458,7 @@
 				491CD7C01F880D93003E5BC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

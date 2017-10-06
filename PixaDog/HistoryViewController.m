@@ -14,10 +14,15 @@
 
 @implementation HistoryViewController
 
+
+#pragma mark - Lifecycles
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"historyCell"];
 }
+
+#pragma mark - TableView methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell"];
