@@ -66,6 +66,9 @@
                                         <rect key="frame" x="111.5" y="8" width="152" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Fetch Dogs"/>
+                                        <connections>
+                                            <action selector="onFetchDogsTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5II-nE-rOj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o51-qW-w7a">
                                         <rect key="frame" x="143" y="72" width="89" height="30"/>
@@ -101,14 +104,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clearHistoryButton" destination="o51-qW-w7a" id="Qp0-ZA-nfu"/>
                         <outlet property="collectionView" destination="noH-yd-hUz" id="Rgg-wd-PQ3"/>
+                        <outlet property="fetchDogsButton" destination="Ide-MS-8jB" id="OKN-Ve-aad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="137.18140929535232"/>
         </scene>
-        <!--HIstory-->
+        <!--History-->
         <scene sceneID="jdf-rN-hlL">
             <objects>
                 <viewController id="DNQ-Yb-2e9" customClass="HistoryViewController" sceneMemberID="viewController">
@@ -156,7 +161,7 @@
                             <constraint firstItem="RVe-u7-xbK" firstAttribute="leading" secondItem="n6N-kV-czh" secondAttribute="leading" id="yeK-vo-bGl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="HIstory" id="58X-yO-Fqk">
+                    <navigationItem key="navigationItem" title="History" id="58X-yO-Fqk">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="iEs-6w-5in">
                             <connections>
                                 <action selector="onTapButton:" destination="DNQ-Yb-2e9" id="OI7-rq-OB6"/>

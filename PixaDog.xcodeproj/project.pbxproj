@@ -18,6 +18,7 @@
 		491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D11F881220003E5BC0 /* DogCollectionViewCell.m */; };
 		491CD7D51F881BC8003E5BC0 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D41F881BC8003E5BC0 /* HistoryViewController.m */; };
 		491CD7D91F8824DD003E5BC0 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7D81F8824DD003E5BC0 /* Dog.m */; };
+		491CD7DC1F882FA7003E5BC0 /* PixabayAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CD7DB1F882FA7003E5BC0 /* PixabayAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		491CD7D41F881BC8003E5BC0 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		491CD7D71F8824DD003E5BC0 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
 		491CD7D81F8824DD003E5BC0 /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
+		491CD7DA1F882FA7003E5BC0 /* PixabayAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixabayAPI.h; sourceTree = "<group>"; };
+		491CD7DB1F882FA7003E5BC0 /* PixabayAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixabayAPI.m; sourceTree = "<group>"; };
 		50C5153A15456BE6553E6322 /* Pods-PixaDog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixaDog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PixaDog/Pods-PixaDog.debug.xcconfig"; sourceTree = "<group>"; };
 		B42A5CB681B24E17741B582A /* libPods-PixaDog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PixaDog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,6 +161,8 @@
 		491CD7C81F880FFA003E5BC0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				491CD7DA1F882FA7003E5BC0 /* PixabayAPI.h */,
+				491CD7DB1F882FA7003E5BC0 /* PixabayAPI.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				491CD7D91F8824DD003E5BC0 /* Dog.m in Sources */,
 				491CD7D21F881220003E5BC0 /* DogCollectionViewCell.m in Sources */,
 				491CD7D51F881BC8003E5BC0 /* HistoryViewController.m in Sources */,
+				491CD7DC1F882FA7003E5BC0 /* PixabayAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
