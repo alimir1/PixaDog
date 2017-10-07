@@ -73,6 +73,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o51-qW-w7a">
                                         <rect key="frame" x="143" y="72" width="89" height="30"/>
                                         <state key="normal" title="Clear History"/>
+                                        <connections>
+                                            <action selector="onClearHistoryTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5aZ-hu-Dvl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90773733416382152" green="0.90773733416382152" blue="0.90773733416382152" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

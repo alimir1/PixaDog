@@ -10,4 +10,5 @@
 
 @interface HistoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) NSArray *savedDogIDs;
 @end

@@ -49,6 +49,10 @@
     [self fetchDogs];
 }
 
+- (IBAction)onClearHistoryTap:(UIButton *)sender {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDogIDs"];
+}
+
 #pragma mark - CollectionView methods
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
