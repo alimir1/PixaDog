@@ -17,6 +17,8 @@
     return @"6647843-3cb1d4df951ead26ff193b96d";
 }
 
+static int pageNumber = 1;
+
 // Singleton
 
 + (id)shared
