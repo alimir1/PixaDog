@@ -32,11 +32,11 @@
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:@YES];
     [PixabayAPI.shared dogsWithCompletion:^(NSArray *dogs, NSError *error){
+        [MBProgressHUD hideHUDForView:self.view animated:@YES];
         if (dogs) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.dogs = dogs;
                 [self.collectionView reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:@YES];
             });
         } else {
             NSLog(@"%@", error.localizedDescription);
