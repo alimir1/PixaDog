@@ -69,7 +69,7 @@ static int pageNumber = 1;
         
         // CHECK: Response status code should be in 2xx range.
         
-        if (!(urlResponse.statusCode <= 299 && urlResponse.statusCode >= 200)) {
+        if (!error && !(urlResponse.statusCode <= 299 && urlResponse.statusCode >= 200)) {
             NSString * localizedDescription = [NSString stringWithFormat:@"Status code error: %@", [NSNumber numberWithInteger:urlResponse.statusCode]];
             NSDictionary *userInfo = @{
                                        NSLocalizedDescriptionKey: NSLocalizedString(localizedDescription, nil),

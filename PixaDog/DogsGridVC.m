@@ -13,6 +13,7 @@
 #import "Dog.h"
 #import "PixabayAPI.h"
 #import "MBProgressHUD.h"
+#import "SCLAlertView.h"
 
 @interface DogsGridVC ()
 
@@ -28,8 +29,7 @@
     [self fetchDogs];
 }
 
-- (void)fetchDogs
-{
+- (void)fetchDogs {
     [MBProgressHUD showHUDAddedTo:self.view animated:@YES];
     [PixabayAPI.shared dogsWithCompletion:^(NSArray *dogs, NSError *error){
         [MBProgressHUD hideHUDForView:self.view animated:@YES];
@@ -37,7 +37,9 @@
             self.dogs = dogs;
             [self.collectionView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            NSString *errorMessage = [NSString stringWithFormat:@"%@", error.localizedDescription];
+            [alert showError:self title:@"Error" subTitle:errorMessage closeButtonTitle:@"OK" duration:0.0f];
         }
     }];
 }
@@ -49,6 +51,8 @@
 
 - (IBAction)onClearHistoryTap:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDogIDs"];
+    SCLAlertView *successNotice = [[SCLAlertView alloc] init];
+    [successNotice showSuccess:self title:@"History cleared!" subTitle:@"Your image browing history has been cleared." closeButtonTitle:@"Ok" duration:0.0f];
 }
 
 #pragma mark - CollectionView methods

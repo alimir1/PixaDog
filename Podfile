@@ -8,4 +8,5 @@ target 'PixaDog' do
   # Pods for PixaDog
 pod 'AFNetworking'
 pod 'MBProgressHUD'
+pod 'SCLAlertView-Objective-C'
 end
