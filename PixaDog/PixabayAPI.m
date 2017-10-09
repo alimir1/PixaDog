@@ -107,7 +107,7 @@ static int pageNumber = 1;
 
 - (void) dogsWithCompletion:(void (^)(NSArray*, NSError*))completion
 {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
     dispatch_async(queue, ^{
         
         // Perform task on seperate thread (using GCD) to prevent blocking main thread.
