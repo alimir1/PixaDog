@@ -52,7 +52,7 @@ static int pageNumber = 1;
     __block NSArray *retArray;
     NSString *urlString = [NSString stringWithFormat:@"https://pixabay.com/api/?key=%@&q=dog&image_type=photo&category=animals&page=%@", PixabayAPI.apiKey, pageNumber];
     NSURL *URL = [NSURL URLWithString:urlString];
-    dispatch_semaphore_t semaphone = dispatch_semaphore_create(0);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
     [request setHTTPMethod:@"GET"];
     NSURLSessionConfiguration *defaultConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -86,10 +86,10 @@ static int pageNumber = 1;
             NSArray *responseArray = JSONResponse[@"hits"];
             retArray = [responseArray copy];
         }
-        dispatch_semaphore_signal(semaphone);
+        dispatch_semaphore_signal(semaphore);
     }];
     [task resume];
-    dispatch_semaphore_wait(semaphone, DISPATCH_TIME_FOREVER); // wait until we have the result
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER); // wait until we have the result
     return retArray;
 }
 
