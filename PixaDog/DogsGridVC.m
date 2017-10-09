@@ -16,7 +16,6 @@
 #import "SCLAlertView.h"
 
 @interface DogsGridVC ()
-
 @end
 
 @implementation DogsGridVC
@@ -28,6 +27,8 @@
     self.collectionView.collectionViewLayout = [[DogImageFlowLayout alloc] init];
     [self fetchDogs];
 }
+
+#pragma mark - Helpers
 
 - (void)fetchDogs {
     [MBProgressHUD showHUDAddedTo:self.view animated:@YES];
@@ -45,6 +46,7 @@
 }
 
 #pragma mark - Target-Actions
+
 - (IBAction)onFetchDogsTap:(UIButton *)sender {
     [self fetchDogs];
 }

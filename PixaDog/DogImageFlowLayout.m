@@ -22,6 +22,8 @@
     return self;
 }
 
+// creates a 2 by 'x' grid
+
 - (CGSize)itemSize
 {
     NSInteger numberOfColumns = 2;

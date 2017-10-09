@@ -10,10 +10,13 @@
 
 @interface Dog : NSObject
 
+#pragma mark - Properties
+
 @property (readonly, nonatomic) NSNumber *idNumber;
 @property (readonly, nonatomic) NSURL *previewImageURL;
 @property (readonly, nonatomic) NSURL *imageURL;
 
+#pragma mark - Methods
 
 - (id) init;
 - (id) initWithIDNumber:(NSNumber *)idNumber previewImageURL:(NSURL *)previewURL imageURL:(NSURL *)imageURL;

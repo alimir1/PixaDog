@@ -18,7 +18,7 @@
 
 static int pageNumber = 1;
 
-// Singleton
+#pragma mark - Singleton
 
 + (id)shared
 {
@@ -31,27 +31,24 @@ static int pageNumber = 1;
     return shared;
 }
 
-- (void) saveDogIDsWithDogs:(NSArray *)dogs
-{
-    if (!dogs) {
-        return;
-    }
-    // save
-    NSMutableArray *savedDogIDs = [[[NSUserDefaults standardUserDefaults] objectForKey:@"savedDogIDs"] mutableCopy];
-    NSMutableArray *newDogIDs = [NSMutableArray new];
-    [dogs enumerateObjectsUsingBlock:^(Dog *dog, NSUInteger idx, BOOL *stop) {
-        [newDogIDs addObject:dog.idNumber];
-    }];
-    if (!savedDogIDs) {
-        savedDogIDs = [NSMutableArray new];
-    }
-    [savedDogIDs addObjectsFromArray:newDogIDs];
-    [[NSUserDefaults standardUserDefaults] setObject:savedDogIDs forKey:@"savedDogIDs"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+#pragma mark - Networking
 
-- (NSArray *) responseArrayWithPageNumber:(NSNumber *)pageNumber error:(NSError **)errorRef
+/*!
+ 
+ * @param pageNumber
+ * Page number to be used for request parameter.
+ 
+ * @param errorRef
+ * Any error will be assigned to this object
+ 
+ Description: Fetches JSON response synchronously. Since this method will be called several times within a while-loop (in a separate thread), we need to perform the GET request synchronously.
+ */
+
+- (NSArray *) JSONResponseWithPageNumber:(NSNumber *)pageNumber error:(NSError **)errorRef
 {
+    
+    // Network request configuration
+    
     __block NSArray *retArray;
     NSString *urlString = [NSString stringWithFormat:@"https://pixabay.com/api/?key=%@&q=dog&image_type=photo&category=animals&page=%@", PixabayAPI.apiKey, pageNumber];
     NSURL *URL = [NSURL URLWithString:urlString];
@@ -60,6 +57,7 @@ static int pageNumber = 1;
     [request setHTTPMethod:@"GET"];
     NSURLSessionConfiguration *defaultConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultConfig delegate:NULL delegateQueue:NULL];
+    
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:
                               ^(NSData * data, NSURLResponse * response, NSError * error)
     {
@@ -81,6 +79,9 @@ static int pageNumber = 1;
         }
         
         if (*errorRef == NULL) {
+            
+            // JSON serialization
+            
             id JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:*&errorRef];
             NSArray *responseArray = JSONResponse[@"hits"];
             retArray = [responseArray copy];
@@ -88,20 +89,36 @@ static int pageNumber = 1;
         dispatch_semaphore_signal(semaphone);
     }];
     [task resume];
-    dispatch_semaphore_wait(semaphone, DISPATCH_TIME_FOREVER);
+    dispatch_semaphore_wait(semaphone, DISPATCH_TIME_FOREVER); // wait until we have the result
     return retArray;
 }
+
+#pragma mark - Conveniences
+
+/*!
+ 
+ * @param completion
+ * A completion handler with pointer to Dog and Error objects.
+ * Dog and Error parameters in the completion block may
+ * be NULL pointers.
+ 
+ Description: Fetches unique dog image informations from Pixabay API. Uses persisted dog IDs to prevent duplicate elements from being sent to the completion handler.
+ */
 
 - (void) dogsWithCompletion:(void (^)(NSArray*, NSError*))completion
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
+        
+        // Perform task on seperate thread (using GCD) to prevent blocking main thread.
+        
         NSArray *savedDogIDs = [[NSUserDefaults standardUserDefaults] objectForKey:@"savedDogIDs"];
         NSMutableArray *retDogs = [NSMutableArray new];
         NSError *error;
+        // Use persisted dog information to keep fetching data from API until 20 unique elements are fetched.
         if (savedDogIDs) {
             while (retDogs.count < 20) {
-                NSArray *responseArray = [self responseArrayWithPageNumber:[NSNumber numberWithInt:pageNumber] error:&error];
+                NSArray *responseArray = [self JSONResponseWithPageNumber:[NSNumber numberWithInt:pageNumber] error:&error];
                 if (error || !responseArray) break;
                 if (responseArray.count < 1) {
                     NSDictionary *userInfo = @{
@@ -123,12 +140,16 @@ static int pageNumber = 1;
                 }
             }
         } else {
+            // No IDs persisted. Fetch normally
             pageNumber = 1;
-            NSArray *responseArr = [[self responseArrayWithPageNumber:@1 error:&error] mutableCopy];
+            NSArray *responseArr = [[self JSONResponseWithPageNumber:@1 error:&error] mutableCopy];
             retDogs = [[Dog dogsWithArrayOfDictionaries:responseArr ] mutableCopy];
         }
         [self saveDogIDsWithDogs:retDogs];
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // Perform completion on main thread (UI related tasks)
+            
             if (error) {
                 completion(NULL, error);
             } else {
@@ -136,6 +157,36 @@ static int pageNumber = 1;
             }
         });
     });
+}
+
+#pragma mark - Helpers
+
+
+/*!
+ 
+ * @param dogs
+ * Array of Dogs to be persisted.
+ 
+ Description: Saves IDs of dogs on local storage using NSUserDefaults
+ */
+
+- (void) saveDogIDsWithDogs:(NSArray *)dogs
+{
+    if (!dogs) {
+        return;
+    }
+    // save
+    NSMutableArray *savedDogIDs = [[[NSUserDefaults standardUserDefaults] objectForKey:@"savedDogIDs"] mutableCopy];
+    NSMutableArray *newDogIDs = [NSMutableArray new];
+    [dogs enumerateObjectsUsingBlock:^(Dog *dog, NSUInteger idx, BOOL *stop) {
+        [newDogIDs addObject:dog.idNumber];
+    }];
+    if (!savedDogIDs) {
+        savedDogIDs = [NSMutableArray new];
+    }
+    [savedDogIDs addObjectsFromArray:newDogIDs];
+    [[NSUserDefaults standardUserDefaults] setObject:savedDogIDs forKey:@"savedDogIDs"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

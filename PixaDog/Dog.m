@@ -8,6 +8,8 @@
 
 #import "Dog.h"
 
+#pragma mark - Class extension
+
 @interface Dog ()
 
 @property (readwrite, nonatomic) NSNumber *idNumber;
@@ -17,6 +19,8 @@
 @end
 
 @implementation Dog
+
+#pragma mark - Initializers
 
 - (id) init
 {
@@ -48,6 +52,8 @@
     
     return [self initWithIDNumber:idNumber previewImageURL:previewImageURL imageURL:imageURL];
 }
+
+#pragma mark - Factory Methods
 
 + (Dog *)dogWithDictionary:(NSDictionary *)dictionary
 {
