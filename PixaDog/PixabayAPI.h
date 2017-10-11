@@ -10,5 +10,5 @@
 
 @interface PixabayAPI : NSObject
 + (id)shared;
-- (void) dogsWithCompletion:(void (^)(NSArray*, NSError*))completion;
+- (void) dogsWithSearchTerm:(NSString *)searchTerm completion:(void (^)(NSArray*, NSError*))completion;
 @end

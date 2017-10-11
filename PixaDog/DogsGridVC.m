@@ -25,14 +25,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.collectionView.collectionViewLayout = [[DogImageFlowLayout alloc] init];
-    [self fetchDogs];
+    [self fetchDogsWithSearchTerm:@"dogs"];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [tap addTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 #pragma mark - Helpers
 
-- (void)fetchDogs {
+- (void)dismissKeyboard
+{
+    [self.view endEditing:@YES];
+}
+
+- (void)fetchDogsWithSearchTerm:(NSString *)searchTerm {
     [MBProgressHUD showHUDAddedTo:self.view animated:@YES];
-    [PixabayAPI.shared dogsWithCompletion:^(NSArray *dogs, NSError *error){
+    [PixabayAPI.shared dogsWithSearchTerm:searchTerm completion:^(NSArray *dogs, NSError *error){
         [MBProgressHUD hideHUDForView:self.view animated:@YES];
         if (dogs) {
             self.dogs = dogs;
@@ -48,13 +56,21 @@
 #pragma mark - Target-Actions
 
 - (IBAction)onFetchDogsTap:(UIButton *)sender {
-    [self fetchDogs];
+    [self fetchDogsWithSearchTerm:self.term];
 }
 
 - (IBAction)onClearHistoryTap:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedDogIDs"];
     SCLAlertView *successNotice = [[SCLAlertView alloc] init];
     [successNotice showSuccess:self title:@"History cleared!" subTitle:@"Your image browing history has been cleared." closeButtonTitle:@"Ok" duration:0.0f];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    self.term = searchText;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self fetchDogsWithSearchTerm:searchBar.text];
 }
 
 #pragma mark - CollectionView methods

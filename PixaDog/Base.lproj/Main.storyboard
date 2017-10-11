@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhK-p8-agP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vhK-p8-agP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dogs-->
+        <!--Dogs GridVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DogsGridVC" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="noH-yd-hUz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xl2-cp-khz">
                                     <size key="itemSize" width="150" height="150"/>
@@ -63,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="557" width="375" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-MS-8jB">
-                                        <rect key="frame" x="111.5" y="8" width="152" height="48"/>
+                                        <rect key="frame" x="114" y="8" width="147" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Fetch Dogs"/>
                                         <connections>
@@ -87,19 +87,30 @@
                                     <constraint firstAttribute="bottom" secondItem="o51-qW-w7a" secondAttribute="bottom" constant="8" id="mcP-tk-0ci"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0C0-Y7-Sjj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Qog-lx-Fwh"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="noH-yd-hUz" firstAttribute="top" secondItem="0C0-Y7-Sjj" secondAttribute="bottom" id="3Ah-RT-gmv"/>
                             <constraint firstAttribute="trailing" secondItem="QL4-Bb-KC0" secondAttribute="trailing" id="91M-aM-OIB"/>
-                            <constraint firstItem="noH-yd-hUz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ez6-z4-Kqk"/>
+                            <constraint firstItem="noH-yd-hUz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="120" id="Ez6-z4-Kqk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QL4-Bb-KC0" secondAttribute="bottom" id="FUX-zX-8pC"/>
+                            <constraint firstItem="0C0-Y7-Sjj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RKq-XV-KC5"/>
                             <constraint firstItem="noH-yd-hUz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SYX-WH-iZg"/>
                             <constraint firstAttribute="trailing" secondItem="noH-yd-hUz" secondAttribute="trailing" id="XNc-kD-025"/>
                             <constraint firstItem="QL4-Bb-KC0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dnT-Ge-ATc"/>
+                            <constraint firstItem="0C0-Y7-Sjj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hbW-0y-T8X"/>
+                            <constraint firstAttribute="trailing" secondItem="0C0-Y7-Sjj" secondAttribute="trailing" id="lcg-ET-l9o"/>
                             <constraint firstItem="QL4-Bb-KC0" firstAttribute="top" secondItem="noH-yd-hUz" secondAttribute="bottom" id="mzU-hM-xDm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Dogs" id="1a8-Hj-Ku5">
+                    <navigationItem key="navigationItem" id="1a8-Hj-Ku5">
                         <barButtonItem key="rightBarButtonItem" image="clock" id="XFL-1x-J8s">
                             <connections>
                                 <segue destination="8G4-P5-hWF" kind="presentation" id="SxW-Yo-C1F"/>
@@ -110,6 +121,7 @@
                         <outlet property="clearHistoryButton" destination="o51-qW-w7a" id="Qp0-ZA-nfu"/>
                         <outlet property="collectionView" destination="noH-yd-hUz" id="Rgg-wd-PQ3"/>
                         <outlet property="fetchDogsButton" destination="Ide-MS-8jB" id="OKN-Ve-aad"/>
+                        <outlet property="searchBar" destination="0C0-Y7-Sjj" id="Seo-4N-i3Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -185,7 +197,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vhK-p8-agP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9o5-rC-6nR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -203,7 +215,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8G4-P5-hWF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ptg-ko-hyX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

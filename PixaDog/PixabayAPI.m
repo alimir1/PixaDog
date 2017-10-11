@@ -44,13 +44,13 @@ static int pageNumber = 1;
  Description: Fetches JSON response synchronously. Since this method will be called several times within a while-loop (in a separate thread), we need to perform the GET request synchronously.
  */
 
-- (NSArray *) JSONResponseWithPageNumber:(NSNumber *)pageNumber error:(NSError **)errorRef
+- (NSArray *) JSONResponseWithPageNumber:(NSNumber *)pageNumber error:(NSError **)errorRef searchTerm:(NSString *)searchterm
 {
     
     // Network request configuration
     
     __block NSArray *retArray;
-    NSString *urlString = [NSString stringWithFormat:@"https://pixabay.com/api/?key=%@&q=dog&image_type=photo&category=animals&page=%@", PixabayAPI.apiKey, pageNumber];
+    NSString *urlString = [NSString stringWithFormat:@"https://pixabay.com/api/?key=%@&q=%@&image_type=photo&page=%@", PixabayAPI.apiKey, searchterm, pageNumber];
     NSURL *URL = [NSURL URLWithString:urlString];
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
@@ -62,6 +62,8 @@ static int pageNumber = 1;
                               ^(NSData * data, NSURLResponse * response, NSError * error)
     {
         *errorRef = error;
+        
+        NSLog(@"%@", response);
         
         NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *) response;
         
@@ -105,7 +107,7 @@ static int pageNumber = 1;
  Description: Fetches unique dog image informations from Pixabay API. Uses persisted dog IDs to prevent duplicate elements from being sent to the completion handler.
  */
 
-- (void) dogsWithCompletion:(void (^)(NSArray*, NSError*))completion
+- (void) dogsWithSearchTerm:(NSString *)searchTerm completion:(void (^)(NSArray*, NSError*))completion
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
     dispatch_async(queue, ^{
@@ -118,7 +120,10 @@ static int pageNumber = 1;
         // Use persisted dog information to keep fetching data from API until 20 unique elements are fetched.
         if (savedDogIDs) {
             while (retDogs.count < 20) {
-                NSArray *responseArray = [self JSONResponseWithPageNumber:[NSNumber numberWithInt:pageNumber] error:&error];
+
+                NSNumber *pNumber = [NSNumber numberWithInteger:pageNumber];
+                
+                NSArray *responseArray = [self JSONResponseWithPageNumber:pNumber error:&error searchTerm:searchTerm];
                 if (error || !responseArray) break;
                 if (responseArray.count < 1) {
                     NSDictionary *userInfo = @{
@@ -142,7 +147,8 @@ static int pageNumber = 1;
         } else {
             // No IDs persisted. Fetch normally
             pageNumber = 1;
-            NSArray *responseArr = [[self JSONResponseWithPageNumber:@1 error:&error] mutableCopy];
+            
+            NSArray *responseArr = [[self JSONResponseWithPageNumber:@1 error:&error searchTerm:searchTerm] mutableCopy];
             retDogs = [[Dog dogsWithArrayOfDictionaries:responseArr ] mutableCopy];
         }
         [self saveDogIDsWithDogs:retDogs];
